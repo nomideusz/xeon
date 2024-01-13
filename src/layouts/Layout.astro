@@ -1,5 +1,4 @@
 ---
-import { SpeedInsights } from '@vercel/speed-insights/next';
 interface Props {
 	title: string;
 }
@@ -15,11 +14,14 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script>
+			import { injectSpeedInsights } from '@vercel/speed-insights';
+			injectSpeedInsights({});
+		</script>
 	</head>
 	<body>
 		<slot />
 	</body>
-	<SpeedInsights />
 </html>
 <style is:global>
 	:root {
